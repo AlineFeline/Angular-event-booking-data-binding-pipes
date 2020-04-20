@@ -1,0 +1,59 @@
+<div id='around'>
+<h1>
+{{titlePage | uppercase}}
+</h1>
+
+<div>
+<table class= 'table'>
+  <thead>
+  <tr class='p-3 mb-2 bg-success text-white'>
+    <th>Name</th>
+    <th>Date</th>
+    <th>Price</th>
+    <th>Location</th>
+    <th>Online</th>
+  </tr>
+  </thead>
+
+  <tbody>
+   
+<tr *ngFor='let event of events' >
+    <th>{{event.name}}</th>
+    <th>{{event.date | date:'longDate'}}</th>
+    <th>{{event.price | currency:'CAD'}}</th>
+    <th>{{event.location}}</th>
+    <th><span *ngIf='event.onlineUrl'>Available</span></th>
+  </tr>
+
+  
+  <div class="modal fade" id="exampleModal" [ngClass]="{'show': showModal}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Event confirmation</h5>
+        <button type="button" class="close" (click)="showModal=false" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        I am happy you will be able to come!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success"(click)="showModal=false" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<button type="button" class="btn btn-success" (click)="showModal=true" data-toggle="modal" data-target="#exampleModal">
+  I will be there
+  </button> 
+  
+
+  
+ 
+  </tbody>
+  </table>
+  </div>
+  </div>
